@@ -1,0 +1,14 @@
+Package: glueformula
+Type: Package
+Title: String interpolation to build regression formulas
+Version: 0.1.0
+Author: Sebastian Kranz
+Maintainer: Sebastian Kranz <sebastian.kranz@uni-ulm.de>
+Description: 
+  Only has the function gl that is a variant of glue useful
+  for building regression formulas given vectors of variable names.
+License: GPL >= 2.0
+Encoding: UTF-8
+LazyData: true
+imports: glue
+RoxygenNote: 6.0.1
