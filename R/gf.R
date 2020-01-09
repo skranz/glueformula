@@ -1,15 +1,3 @@
-example.gf = function() {
-  library(glueformula)
-
-  contr = c("x1","x2","x3")
-  instr = c(contr,"z1","z2")
-  gf(q ~ p + {contr} | {instr})
-
-  library(ivreg)
-  ivreg(gf(y ~ p + {contr} | {instr}))
-
-}
-
 #' String interpolation to build regression formulas from vectors with variable names.
 #'
 #' Insert vectors with variable names into \{ \} placeholder in a formula and collapse vectors with +.
@@ -39,8 +27,17 @@ example.gf = function() {
 #' @export
 gf = function(form, values=list(), enclos=parent.frame(), as.formula=TRUE, form.env = parent.frame(), collapse=" + " ) {
 
-  if (is(form,"formula"))
-    form = paste0(trimws(capture.output(print(form))), collapse="")
+  if (is(form,"formula")) {
+    # Use for formula with 3 parts formulation from here
+    # https://github.com/tidyverse/glue/issues/108
+    parts <- gsub("\\n\\s*","",as.character(form))
+    if (length(parts)==3) {
+      form = paste0(parts[c(2,1,3)], collapse="")
+    } else {
+      # If the formula does not have 3 parts: capture output
+      form = paste0(trimws(capture.output(print(form))), collapse="")
+    }
+  }
 
   open = gregexpr("{",form, fixed=TRUE)[[1]]
   close = gregexpr("}",form, fixed=TRUE)[[1]]
