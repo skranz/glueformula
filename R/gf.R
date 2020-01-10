@@ -16,7 +16,7 @@
 #' # using ivreg
 #'
 #' contr = c("x1","x2","x3") # exogenous control variables
-#' instr = c(contr, "z1","z2) # instruments
+#' instr = c(contr, "z1","z2") # instruments
 #'
 #' # Replace {contr} and {instr} in formula
 #' gf(q ~ p + {contr} | {instr})
@@ -61,4 +61,44 @@ gf = function(form, values=list(), enclos=parent.frame(), as.formula=TRUE, form.
     stop(paste0("You created a non-valid formula:\n",res))
   }
   return(res.form)
+}
+
+#' Creates a simple snippet code to generate a string
+#' vector of all column names of a data frame
+#'
+#' The if the data frame has 3 columns named
+#' \code(x), \code{y} and \code{name with space}
+#' the function cats and on windows also copies to
+#' your clipboard the
+#' following code:
+#'
+#' \code{c("x","y","`name with space`")}
+#'
+#' This can be helpful to specify vectors of control
+#' variables when using \code{\link{gf}}. If there are
+#' many variables it is just easier to remove not-used variables
+#' from the created code snippet than to write down
+#' manually all used variables.
+#'
+#' @param x A data frame or other objects with \code{names}.
+#' @examples
+#' library(dplyr)
+#' df = tibble(x=1,y=5,z=4,`a b`=4)
+#' varnames_snippet(df)
+#'
+#' @export
+varnames_snippet = function(x) {
+  if (!is.null(names(x))) x = names(x)
+
+  invalid.regex = "[ \\-]"
+  invalid = grepl(invalid.regex,x)
+  bt = ifelse(invalid,"`","")
+
+  code = paste0("c(",paste0('"',bt,x,bt,'"', collapse=", "),")")
+  cat(paste0("\n",code))
+  if (.Platform$OS.type == "windows") {
+    writeClipboard(code)
+    cat("\n\nCode above is also copied to clipboard.")
+  }
+  invisible(code)
 }

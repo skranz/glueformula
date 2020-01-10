@@ -2,7 +2,7 @@
 % Please edit documentation in R/gf.R
 \name{gf}
 \alias{gf}
-\title{String interpolation of variables in regression formulas}
+\title{String interpolation to build regression formulas from vectors with variable names.}
 \usage{
 gf(form, values = list(), enclos = parent.frame(), as.formula = TRUE,
   form.env = parent.frame(), collapse = " + ")
@@ -21,6 +21,23 @@ gf(form, values = list(), enclos = parent.frame(), as.formula = TRUE,
 \item{collapse}{how shall variables in a vector be collapsed. Default \code{" # "}.}
 }
 \description{
-Insert character vectors with variable names into a formula collapsing vectors with +. Similar to the \code{glue} function
-from the package glue.
+Insert vectors with variable names into \{ \} placeholder in a formula and collapse vectors with +.
+}
+\details{
+An adaption of the \code{glue} function specialized to build
+regression formulas from variable names stored in vectors.
+}
+\examples{
+# Assume we want to estimate a demand function
+# using ivreg
+
+contr = c("x1","x2","x3") # exogenous control variables
+instr = c(contr, "z1","z2") # instruments
+
+# Replace {contr} and {instr} in formula
+gf(q ~ p + {contr} | {instr})
+
+# You could also provide the formula as string
+gf("q ~ p + {contr} | {instr}")
+
 }
