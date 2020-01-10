@@ -12,7 +12,7 @@ varnames_snippet(x)
 }
 \description{
 The if the data frame has 3 columns named
-\code(x), \code{y} and \code{name with space}
+"x", "y" and "name with space"
 the function cats and on windows also copies to
 your clipboard the
 following code:

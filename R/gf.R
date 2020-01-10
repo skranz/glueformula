@@ -52,7 +52,7 @@ gf = function(form, values=list(), enclos=parent.frame(), as.formula=TRUE, form.
     paste0(val, collapse=collapse)
   })
   names(vals) = vars
-  res = glue::glue(form, .envir = vals)
+  res = glue(form, .envir = vals)
   if (!as.formula) {
     return(res)
   }
@@ -67,7 +67,7 @@ gf = function(form, values=list(), enclos=parent.frame(), as.formula=TRUE, form.
 #' vector of all column names of a data frame
 #'
 #' The if the data frame has 3 columns named
-#' \code(x), \code{y} and \code{name with space}
+#' "x", "y" and "name with space"
 #' the function cats and on windows also copies to
 #' your clipboard the
 #' following code:
