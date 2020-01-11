@@ -29,14 +29,20 @@ You can then manually select the used variables in your regression by deleting t
 
 ### Installation
 
-Run the following code to install the package from Github:
+The easiest way to install glueformula is from my Github powered package repository by running:
+
+```r
+install.packages("glueformula",repos = c("https://skranz-repo.github.io/drat/",getOption("repos")))
+```
+
+Alteneratively, you can run the following code to install the source package from Github:
 ```
 if (!require(glue)) install.packages("glue")
 if (!require(remotes)) install.packages("remotes")
 remotes::install_github("skranz/glueformula")
 ```
 
-If installation fails because unimportant warnings are converted to errors run before the installation:
+If the Github installation fails because unimportant warnings are converted to errors run before the installation:
 ```r
 Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS="true")
 ```
