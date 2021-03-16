@@ -82,8 +82,7 @@ gf = function(form, values=list(), enclos=parent.frame(), as.formula=TRUE, form.
 #'
 #' @param x A data frame or other objects with \code{names}.
 #' @examples
-#' library(dplyr)
-#' df = tibble(x=1,y=5,z=4,`a b`=4)
+#' df = data.frame(x=1,y=5,z=4,`a b`=4)
 #' varnames_snippet(df)
 #'
 #' @export

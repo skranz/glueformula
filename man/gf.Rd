@@ -4,8 +4,14 @@
 \alias{gf}
 \title{String interpolation to build regression formulas from vectors with variable names.}
 \usage{
-gf(form, values = list(), enclos = parent.frame(), as.formula = TRUE,
-  form.env = parent.frame(), collapse = " + ")
+gf(
+  form,
+  values = list(),
+  enclos = parent.frame(),
+  as.formula = TRUE,
+  form.env = parent.frame(),
+  collapse = " + "
+)
 }
 \arguments{
 \item{form}{A formula or string of a formula. E.g. \code{y~x+{controls}} where \code{controls} is a character vector with variables that will be inserted.}

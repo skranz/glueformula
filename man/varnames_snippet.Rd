@@ -27,8 +27,7 @@ from the created code snippet than to write down
 manually all used variables.
 }
 \examples{
-library(dplyr)
-df = tibble(x=1,y=5,z=4,`a b`=4)
+df = data.frame(x=1,y=5,z=4,`a b`=4)
 varnames_snippet(df)
 
 }

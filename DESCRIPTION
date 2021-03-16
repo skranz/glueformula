@@ -10,5 +10,5 @@ Description:
 License: GPL >= 2.0
 Encoding: UTF-8
 LazyData: true
-Imports: glue
-RoxygenNote: 6.0.1
+Imports: glue, utils, methods
+RoxygenNote: 7.1.1
