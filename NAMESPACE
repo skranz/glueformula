@@ -1,6 +1,6 @@
 export("gf")
 export("varnames_snippet")
-importFrom(glue,glue)
+importFrom(glue,glue_data)
 importFrom("methods", "is")
 importFrom("utils", "capture.output")
 

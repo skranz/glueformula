@@ -1,7 +1,7 @@
 Package: glueformula
 Type: Package
 Title: String interpolation to build regression formulas
-Version: 0.1.0
+Version: 0.1.1
 Author: Sebastian Kranz
 Maintainer: Sebastian Kranz <sebastian.kranz@uni-ulm.de>
 Description: 
