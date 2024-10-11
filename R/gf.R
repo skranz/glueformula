@@ -52,7 +52,7 @@ gf = function(form, values=list(), enclos=parent.frame(), as.formula=TRUE, form.
     paste0(val, collapse=collapse)
   })
   names(vals) = vars
-  res = glue::glue_data(.x = vals, form)
+  res = glue_data(.x = vals, form)
   if (!as.formula) {
     return(res)
   }
